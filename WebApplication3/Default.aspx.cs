@@ -9,12 +9,9 @@ using System.Configuration;
 using Npgsql;
 namespace WebApplication3
 {
+    
     public partial class _Default : Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            
-        }
         protected void btnInsertion_Click(object sender, EventArgs e)
         {
             try
@@ -47,10 +44,17 @@ namespace WebApplication3
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + ex + "');", true);
             }
         }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)
         {
+            Course.course = 1430;
+            Server.Transfer("Course Page.aspx", false);
+            
+        }
 
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Course.course = 2430;
+            Server.Transfer("Course Page.aspx", false);
         }
     }
     
