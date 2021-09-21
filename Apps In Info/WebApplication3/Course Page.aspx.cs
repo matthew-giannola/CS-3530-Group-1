@@ -15,7 +15,7 @@ namespace WebApplication3
         public static Int32 course;
         protected void Page_Load(object sender, EventArgs e)
         {
-            var cs = "Host=localhost;Username=postgres;Password=smokey99;Database=Project";
+            var cs = "Host=localhost;Username=postgres;Password=smokey99;Database=Apps Project";
             NpgsqlConnection npgsqlConnection = new NpgsqlConnection(cs);
             var con = npgsqlConnection;
             con.Open();
@@ -40,6 +40,12 @@ namespace WebApplication3
         public void updateCourse(Int32 courseId)
         {
             
+        }
+
+        protected void testButton_Click(object sender, EventArgs e)
+        {
+            About.course = course;
+            Server.Transfer("Quiz.aspx", false);
         }
     }
 }

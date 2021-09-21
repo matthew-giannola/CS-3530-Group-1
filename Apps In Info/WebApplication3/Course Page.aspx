@@ -10,7 +10,11 @@
 </head>
 <body>
     <div>
-        <asp:Panel ID="test" runat="server"></asp:Panel>
+        <asp:Panel ID="test" runat="server">
+            <asp:Panel ID="Panel1" runat="server">
+                <asp:Button ID="testButton" runat="server" OnClick="testButton_Click" Text="Take Test" />
+            </asp:Panel>
+        </asp:Panel>
     </div>
    </script>
 </body>
