@@ -14,9 +14,13 @@ namespace WebApplication3
     public partial class About : Page
     {
         public static Int32 course;
+        private int quizid = 0;
+        private Int32 score = 0;
+        private static Int32 total = 5;
+        private int[] correctanswers = new int[5];
         protected void Button1_Click(object sender, EventArgs e)
         {
-            if (RadioButtonList1.SelectedIndex == 0)
+            /*(if (RadioButtonList1.SelectedIndex == 0)
             {
 
                 Question_1A.Text = "Correct";
@@ -70,14 +74,57 @@ namespace WebApplication3
             {
                 Question_5A.Text = "Incorrect";
                 Question_5A.Visible = true;
-            }
+            }*/
+            var cs = "Host=localhost;Username=postgres;Password=smokey99;Database=Apps Project";
+            NpgsqlConnection npgsqlConnection = new NpgsqlConnection(cs);
+            var con = npgsqlConnection;
+            con.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand();
+            cmd.Connection = con;
 
+            /*for (int i = 1; i < 21; i++)
+            {
+                Boolean result = false;
+                cmd.CommandText = "SELECT correctanswer FROM quizanswers WHERE qcount = " + i + " and quizid = " + quizid + ";";
+                result = (Boolean)cmd.ExecuteScalar();
+                switch(i)
+                {
+                    case < 5:
+                        {
+                            if(result == true)
+                            {
+                                if(RadioButtonList1.SelectedIndex == i-1)
+                                {
+
+                                }
+                            }
+                        }
+                    default:
+                        {
+
+                        }
+                }
+                    
+            }*/
+
+            //Load Array
+            int count = 0;
+            for(int i = 1; i < 21; i++)
+            {
+                Boolean result = false;
+                cmd.CommandText = "SELECT correctanswer FROM quizanswers WHERE qcount = " + i + " and quizid = " + quizid + ";";
+                result = (Boolean)cmd.ExecuteScalar();
+                if(result == true)
+                {
+                    cmd.CommandText = "SELECT correctanswer FROM quizanswers WHERE qcount = " + i + " and quizid = " + quizid + ";";
+                    correctanswers[count] = (int)cmd.ExecuteScalar();
+                }
+                
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
                 var quizID = 0;
                 var cs = "Host=localhost;Username=postgres;Password=smokey99;Database=Apps Project";
                 NpgsqlConnection npgsqlConnection = new NpgsqlConnection(cs);
@@ -89,9 +136,16 @@ namespace WebApplication3
                 cmd.CommandText += course + ";";
                 cmd.CommandType = CommandType.Text;
                 quizID = (int)cmd.ExecuteScalar();
+            quizid = quizID;
 
-                //Load Questions
-                cmd.CommandText = "SELECT question FROM quizquestions WHERE quizid = " + quizID + " AND qid = 1;";
+            cmd.CommandText = "SELECT quiztitle FROM quizzes WHERE courseid = ";
+            cmd.CommandText += course + ";";
+            cmd.CommandType = CommandType.Text;
+            quizTitle.Text = cmd.ExecuteScalar().ToString();
+
+
+            //Load Questions
+            cmd.CommandText = "SELECT question FROM quizquestions WHERE quizid = " + quizID + " AND qid = 1;";
                 Question_1.Text = cmd.ExecuteScalar().ToString();
                 cmd.CommandText = "SELECT question FROM quizquestions WHERE quizid = " + quizID + " AND qid = 2;";
                 Question_2.Text = cmd.ExecuteScalar().ToString();
@@ -156,7 +210,9 @@ namespace WebApplication3
                 RadioButtonList5.Items.Insert(2, cmd.ExecuteScalar().ToString());
                 cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 5 and qcount = 20";
                 RadioButtonList5.Items.Insert(3, cmd.ExecuteScalar().ToString());
-            }
+
+
+
             
         }
     }

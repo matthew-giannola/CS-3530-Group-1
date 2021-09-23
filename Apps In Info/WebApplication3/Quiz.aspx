@@ -2,6 +2,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
+        <asp:Label ID="quizTitle" runat="server" Text="Label"></asp:Label>
+    </h2>
+    <h2>
         <asp:Label ID="Question_1" runat="server" Text="Question 1"></asp:Label>
         <asp:Label ID="Question_1A" runat="server" Text="Label" Visible="False"></asp:Label>
         <asp:RadioButtonList ID="RadioButtonList1" runat="server" Height="157px">
