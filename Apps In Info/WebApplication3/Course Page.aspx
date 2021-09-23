@@ -12,7 +12,7 @@
     <div>
         <asp:Panel ID="test" runat="server">
             <asp:Panel ID="Panel1" runat="server">
-                <asp:Button ID="testButton" runat="server" OnClick="testButton_Click" Text="Take Test" />
+                <asp:Button ID="testButton" runat="server" OnClick="testButton_Click" Text="Take Test" CausesValidation="False" />
             </asp:Panel>
         </asp:Panel>
     </div>

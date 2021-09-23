@@ -76,84 +76,88 @@ namespace WebApplication3
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var quizID = 0;
-            var cs = "Host=localhost;Username=postgres;Password=smokey99;Database=Apps Project";
-            NpgsqlConnection npgsqlConnection = new NpgsqlConnection(cs);
-            var con = npgsqlConnection;
-            con.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "SELECT quizid FROM quizzes WHERE courseid = ";
-            cmd.CommandText += course + ";";
-            cmd.CommandType = CommandType.Text;
-            quizID = (int)cmd.ExecuteScalar();
+            if (!IsPostBack)
+            {
+                var quizID = 0;
+                var cs = "Host=localhost;Username=postgres;Password=smokey99;Database=Apps Project";
+                NpgsqlConnection npgsqlConnection = new NpgsqlConnection(cs);
+                var con = npgsqlConnection;
+                con.Open();
+                NpgsqlCommand cmd = new NpgsqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT quizid FROM quizzes WHERE courseid = ";
+                cmd.CommandText += course + ";";
+                cmd.CommandType = CommandType.Text;
+                quizID = (int)cmd.ExecuteScalar();
 
-            //Load Questions
-            cmd.CommandText = "SELECT question FROM quizquestions WHERE quizid = " + quizID + " AND qid = 1;";
-            Question_1.Text = cmd.ExecuteScalar().ToString();
-            cmd.CommandText = "SELECT question FROM quizquestions WHERE quizid = " + quizID + " AND qid = 2;";
-            Question_2.Text = cmd.ExecuteScalar().ToString();
-            cmd.CommandText = "SELECT question FROM quizquestions WHERE quizid = " + quizID + " AND qid = 3;";
-            Question_3.Text = cmd.ExecuteScalar().ToString();
-            cmd.CommandText = "SELECT question FROM quizquestions WHERE quizid = " + quizID + " AND qid = 4;";
-            Question_4.Text = cmd.ExecuteScalar().ToString();
-            cmd.CommandText = "SELECT question FROM quizquestions WHERE quizid = " + quizID + " AND qid = 5;";
-            Question_5.Text = cmd.ExecuteScalar().ToString();
+                //Load Questions
+                cmd.CommandText = "SELECT question FROM quizquestions WHERE quizid = " + quizID + " AND qid = 1;";
+                Question_1.Text = cmd.ExecuteScalar().ToString();
+                cmd.CommandText = "SELECT question FROM quizquestions WHERE quizid = " + quizID + " AND qid = 2;";
+                Question_2.Text = cmd.ExecuteScalar().ToString();
+                cmd.CommandText = "SELECT question FROM quizquestions WHERE quizid = " + quizID + " AND qid = 3;";
+                Question_3.Text = cmd.ExecuteScalar().ToString();
+                cmd.CommandText = "SELECT question FROM quizquestions WHERE quizid = " + quizID + " AND qid = 4;";
+                Question_4.Text = cmd.ExecuteScalar().ToString();
+                cmd.CommandText = "SELECT question FROM quizquestions WHERE quizid = " + quizID + " AND qid = 5;";
+                Question_5.Text = cmd.ExecuteScalar().ToString();
 
-            //Question 1 Load Answers
-            RadioButtonList1.Items.Clear();
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 1 and aid = 1";
-            RadioButtonList1.Items.Insert(0, cmd.ExecuteScalar().ToString());
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 1 and aid = 2";
-            RadioButtonList1.Items.Insert(1, cmd.ExecuteScalar().ToString());
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 1 and aid = 3";
-            RadioButtonList1.Items.Insert(2, cmd.ExecuteScalar().ToString());
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 1 and aid = 4";
-            RadioButtonList1.Items.Insert(3, cmd.ExecuteScalar().ToString());
+                //Question 1 Load Answers
+                RadioButtonList1.Items.Clear();
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 1 and qcount = 1";
+                RadioButtonList1.Items.Insert(0, cmd.ExecuteScalar().ToString());
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 1 and qcount = 2";
+                RadioButtonList1.Items.Insert(1, cmd.ExecuteScalar().ToString());
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 1 and qcount = 3";
+                RadioButtonList1.Items.Insert(2, cmd.ExecuteScalar().ToString());
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 1 and qcount = 4";
+                RadioButtonList1.Items.Insert(3, cmd.ExecuteScalar().ToString());
 
-            //Questions 2 Load Answers
-            RadioButtonList2.Items.Clear();
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 2 and aid = 1";
-            RadioButtonList1.Items.Insert(0, cmd.ExecuteScalar().ToString());
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 2 and aid = 2";
-            RadioButtonList1.Items.Insert(1, cmd.ExecuteScalar().ToString());
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 2 and aid = 3";
-            RadioButtonList1.Items.Insert(2, cmd.ExecuteScalar().ToString());
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 2 and aid = 4";
-            RadioButtonList1.Items.Insert(3, cmd.ExecuteScalar().ToString());
+                //Questions 2 Load Answers
+                RadioButtonList2.Items.Clear();
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 2 and qcount = 5";
+                RadioButtonList2.Items.Insert(0, cmd.ExecuteScalar().ToString());
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 2 and qcount = 6";
+                RadioButtonList2.Items.Insert(1, cmd.ExecuteScalar().ToString());
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 2 and qcount = 7";
+                RadioButtonList2.Items.Insert(2, cmd.ExecuteScalar().ToString());
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 2 and qcount = 8";
+                RadioButtonList2.Items.Insert(3, cmd.ExecuteScalar().ToString());
 
-            //Question 3 Load Answers
-            RadioButtonList3.Items.Clear();
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 3 and aid = 1";
-            RadioButtonList1.Items.Insert(0, cmd.ExecuteScalar().ToString());
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 3 and aid = 2";
-            RadioButtonList1.Items.Insert(1, cmd.ExecuteScalar().ToString());
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 3 and aid = 3";
-            RadioButtonList1.Items.Insert(2, cmd.ExecuteScalar().ToString());
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 3 and aid = 4";
-            RadioButtonList1.Items.Insert(3, cmd.ExecuteScalar().ToString());
+                //Question 3 Load Answers
+                RadioButtonList3.Items.Clear();
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 3 and qcount = 9";
+                RadioButtonList3.Items.Insert(0, cmd.ExecuteScalar().ToString());
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 3 and qcount = 10";
+                RadioButtonList3.Items.Insert(1, cmd.ExecuteScalar().ToString());
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 3 and qcount = 11";
+                RadioButtonList3.Items.Insert(2, cmd.ExecuteScalar().ToString());
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 3 and qcount = 12";
+                RadioButtonList3.Items.Insert(3, cmd.ExecuteScalar().ToString());
 
-            //Question 4 Load Answers
-            RadioButtonList4.Items.Clear();
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 4 and aid = 1";
-            RadioButtonList1.Items.Insert(0, cmd.ExecuteScalar().ToString());
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 4 and aid = 2";
-            RadioButtonList1.Items.Insert(1, cmd.ExecuteScalar().ToString());
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 4 and aid = 3";
-            RadioButtonList1.Items.Insert(2, cmd.ExecuteScalar().ToString());
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 4 and aid = 4";
-            RadioButtonList1.Items.Insert(3, cmd.ExecuteScalar().ToString());
+                //Question 4 Load Answers
+                RadioButtonList4.Items.Clear();
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 4 and qcount = 13";
+                RadioButtonList4.Items.Insert(0, cmd.ExecuteScalar().ToString());
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 4 and qcount = 14";
+                RadioButtonList4.Items.Insert(1, cmd.ExecuteScalar().ToString());
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 4 and qcount = 15";
+                RadioButtonList4.Items.Insert(2, cmd.ExecuteScalar().ToString());
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 4 and qcount = 16";
+                RadioButtonList4.Items.Insert(3, cmd.ExecuteScalar().ToString());
 
-            //Question 5 Load Answers
-            RadioButtonList5.Items.Clear();
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 5 and aid = 1";
-            RadioButtonList1.Items.Insert(0, cmd.ExecuteScalar().ToString());
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 5 and aid = 2";
-            RadioButtonList1.Items.Insert(1, cmd.ExecuteScalar().ToString());
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 5 and aid = 3";
-            RadioButtonList1.Items.Insert(2, cmd.ExecuteScalar().ToString());
-            cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 5 and aid = 4";
-            RadioButtonList1.Items.Insert(3, cmd.ExecuteScalar().ToString());
+                //Question 5 Load Answers
+                RadioButtonList5.Items.Clear();
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 5 and qcount = 17";
+                RadioButtonList5.Items.Insert(0, cmd.ExecuteScalar().ToString());
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 5 and qcount = 18";
+                RadioButtonList5.Items.Insert(1, cmd.ExecuteScalar().ToString());
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 5 and qcount = 19";
+                RadioButtonList5.Items.Insert(2, cmd.ExecuteScalar().ToString());
+                cmd.CommandText = "SELECT answer FROM quizanswers WHERE quizid = " + quizID + "and qqid = 5 and qcount = 20";
+                RadioButtonList5.Items.Insert(3, cmd.ExecuteScalar().ToString());
+            }
+            
         }
     }
 }

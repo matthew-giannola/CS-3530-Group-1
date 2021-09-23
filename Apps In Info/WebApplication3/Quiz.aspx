@@ -42,6 +42,6 @@
             <asp:ListItem>C)</asp:ListItem>
             <asp:ListItem>D)</asp:ListItem>
         </asp:RadioButtonList>
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" CausesValidation="False" />
 &nbsp;</h2>
     </asp:Content>
