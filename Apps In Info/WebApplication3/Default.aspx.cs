@@ -56,6 +56,11 @@ namespace WebApplication3
             Course.course = 2430;
             Server.Transfer("Course Page.aspx", false);
         }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     
 }

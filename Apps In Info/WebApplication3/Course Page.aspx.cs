@@ -15,7 +15,8 @@ namespace WebApplication3
         public static Int32 course;
         protected void Page_Load(object sender, EventArgs e)
         {
-            var cs = "Host=localhost;Username=postgres;Password=smokey99;Database=Apps Project";
+
+         /*   var cs = "Host=localhost;Username=postgres;Password=smokey99;Database=Apps Project";
             NpgsqlConnection npgsqlConnection = new NpgsqlConnection(cs);
             var con = npgsqlConnection;
             con.Open();
@@ -35,7 +36,7 @@ namespace WebApplication3
 
             // Grabs the description from the database
             cmd.CommandText = "SELECT description FROM classes WHERE id = " + course + ";";
-            courseDescription.Text = cmd.ExecuteScalar().ToString();
+            courseDescription.Text = cmd.ExecuteScalar().ToString(); */
         }
         public void updateCourse(Int32 courseId)
         {
