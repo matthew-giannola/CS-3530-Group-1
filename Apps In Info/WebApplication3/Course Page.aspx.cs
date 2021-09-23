@@ -45,7 +45,7 @@ namespace WebApplication3
         protected void testButton_Click(object sender, EventArgs e)
         {
             About.course = course;
-            Server.Transfer("Quiz.aspx", false);
+            Response.Redirect("Quiz.aspx", false);
         }
     }
 }

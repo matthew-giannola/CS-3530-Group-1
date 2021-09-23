@@ -47,14 +47,14 @@ namespace WebApplication3
         protected void Button1_Click(object sender, EventArgs e)
         {
             Course.course = 1430;
-            Server.Transfer("Course Page.aspx", false);
+            Response.Redirect("Course Page.aspx", false);
             
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
             Course.course = 2430;
-            Server.Transfer("Course Page.aspx", false);
+            Response.Redirect("Course Page.aspx", false);
         }
     }
     
