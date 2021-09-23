@@ -21,61 +21,7 @@ namespace WebApplication3
         private int[] useranswers = new int[5];
         protected void Button1_Click(object sender, EventArgs e)
         {
-            /*(if (RadioButtonList1.SelectedIndex == 0)
-            {
 
-                Question_1A.Text = "Correct";
-                Question_1A.Visible = true;
-            }
-            else
-            {
-                Question_1A.Text = "Incorrect";
-                Question_1A.Visible = true;
-            }
-            if (RadioButtonList2.SelectedIndex == 1)
-            {
-
-                Question_2A.Text = "Correct";
-                Question_2A.Visible = true;
-            }
-            else
-            {
-                Question_2A.Text = "Incorrect";
-                Question_2A.Visible = true;
-            }
-            if (RadioButtonList3.SelectedIndex == 2)
-            {
-
-                Question_3A.Text = "Correct";
-                Question_3A.Visible = true;
-            }
-            else
-            {
-                Question_3A.Text = "Incorrect";
-                Question_3A.Visible = true;
-            }
-            if (RadioButtonList4.SelectedIndex == 3)
-            {
-
-                Question_4A.Text = "Correct";
-                Question_4A.Visible = true;
-            }
-            else
-            {
-                Question_4A.Text = "Incorrect";
-                Question_4A.Visible = true;
-            }
-            if (RadioButtonList5.SelectedIndex == 0)
-            {
-
-                Question_5A.Text = "Correct";
-                Question_5A.Visible = true;
-            }
-            else
-            {
-                Question_5A.Text = "Incorrect";
-                Question_5A.Visible = true;
-            }*/
             var cs = "Host=localhost;Username=postgres;Password=smokey99;Database=Apps Project";
             NpgsqlConnection npgsqlConnection = new NpgsqlConnection(cs);
             var con = npgsqlConnection;
@@ -83,33 +29,7 @@ namespace WebApplication3
             NpgsqlCommand cmd = new NpgsqlCommand();
             cmd.Connection = con;
 
-            /*for (int i = 1; i < 21; i++)
-            {
-                Boolean result = false;
-                cmd.CommandText = "SELECT correctanswer FROM quizanswers WHERE qcount = " + i + " and quizid = " + quizid + ";";
-                result = (Boolean)cmd.ExecuteScalar();
-                switch(i)
-                {
-                    case < 5:
-                        {
-                            if(result == true)
-                            {
-                                if(RadioButtonList1.SelectedIndex == i-1)
-                                {
-
-                                }
-                            }
-                        }
-                    default:
-                        {
-
-                        }
-                }
-                    
-            }*/
-
-
-            
+            //Gather Correct Answers
             int count = 0;
             for (int i = 1; i < 21; i++)
             {
@@ -123,11 +43,15 @@ namespace WebApplication3
                     count++;
                 }
             }
+
+            //Gather user answers
             useranswers[0] = RadioButtonList1.SelectedIndex;
             useranswers[1] = RadioButtonList2.SelectedIndex;
             useranswers[2] = RadioButtonList3.SelectedIndex;
             useranswers[3] = RadioButtonList4.SelectedIndex;
             useranswers[4] = RadioButtonList5.SelectedIndex;
+
+            //Compare Answers
             for (int i = 0; i < 5; i++)
             {
                 if (useranswers[i] == correctanswers[i])
@@ -135,10 +59,10 @@ namespace WebApplication3
                     score++;
                 }
             }
+            //Dispaly Score
             scoreLabel.Visible = true;
             scoreLabel.Text = score + "/" + total;
-            //Load Array
-
+            Button1.Enabled = false;
         }
 
         protected void Page_Load(object sender, EventArgs e)
