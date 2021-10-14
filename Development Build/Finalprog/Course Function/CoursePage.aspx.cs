@@ -30,7 +30,25 @@ namespace Finalprog
 
             var currentclass = us.Classes.Where(a => a.Id == course).FirstOrDefault();
 
-            lblCourse.Text = currentclass.Id + " " + currentclass.description;
+            lblCourse.Text = currentclass.Id + " " + currentclass.courseTitle;
+
+            var zoom = us.Classes.Where(a => a.Id == course).Select(a => a.zoomLink).FirstOrDefault();
+            var descrip = us.Classes.Where(a => a.Id == course).Select(a => a.description).FirstOrDefault();
+            var announcemessage = us.Classes.Where(a => a.Id == course).Select(a => a.announcementMessage).FirstOrDefault();
+            var teacher = us.Classes.Where(a => a.Id == course).Select(a => a.professorName).FirstOrDefault();
+
+            announceLabel.Text = announcemessage;
+            descriptionLabel.Text = descrip;
+            if(zoom == null)
+            {
+                zoomLabel.Text = "This course does not have a Zoom meeting scheduled. Check back later";
+            }
+            else
+            {
+                zoomLabel.Text = zoom;
+            }
+            teachLabel.Text = teacher;
+
         }
         public void updateCourse(Int32 courseId)
         {
