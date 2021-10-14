@@ -13,7 +13,7 @@
             <br />
             <br />
             <asp:Button ID="testButton" runat="server" Height="46px" OnClick="testButton_Click" Text="Take Test" Width="85px" />
-            <asp:Panel ID="Panel1" runat="server" Height="30px">
+            <asp:Panel ID="Panel1" runat="server" Height="19px">
                 <asp:Label ID="announceLabel" runat="server" Text="Annoucment"></asp:Label>
             </asp:Panel>
             <asp:Panel ID="test" runat="server" Height="246px">

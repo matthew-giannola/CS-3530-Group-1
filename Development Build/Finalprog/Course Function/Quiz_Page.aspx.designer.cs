@@ -42,15 +42,6 @@ namespace Finalprog
         protected global::System.Web.UI.WebControls.Label Question_1;
 
         /// <summary>
-        /// scoreLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label scoreLabel;
-
-        /// <summary>
         /// RadioButtonList1 control.
         /// </summary>
         /// <remarks>
@@ -67,15 +58,6 @@ namespace Finalprog
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Question_2;
-
-        /// <summary>
-        /// Question_2A control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Question_2A;
 
         /// <summary>
         /// RadioButtonList2 control.
@@ -96,15 +78,6 @@ namespace Finalprog
         protected global::System.Web.UI.WebControls.Label Question_3;
 
         /// <summary>
-        /// Question_3A control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Question_3A;
-
-        /// <summary>
         /// RadioButtonList3 control.
         /// </summary>
         /// <remarks>
@@ -123,15 +96,6 @@ namespace Finalprog
         protected global::System.Web.UI.WebControls.Label Question_4;
 
         /// <summary>
-        /// Question_4A control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Question_4A;
-
-        /// <summary>
         /// RadioButtonList4 control.
         /// </summary>
         /// <remarks>
@@ -148,15 +112,6 @@ namespace Finalprog
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Question_5;
-
-        /// <summary>
-        /// Question_5A control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Question_5A;
 
         /// <summary>
         /// RadioButtonList5 control.
