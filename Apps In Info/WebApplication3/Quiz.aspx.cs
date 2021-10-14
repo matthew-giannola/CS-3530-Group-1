@@ -59,7 +59,8 @@ namespace WebApplication3
                     score++;
                 }
             }
-            //Dispaly Score
+
+            //Display Score
             scoreLabel.Visible = true;
             scoreLabel.Text = score + "/" + total;
             Button1.Enabled = false;
@@ -169,11 +170,6 @@ namespace WebApplication3
                 index = RadioButtonList5.SelectedIndex;
                 RadioButtonList5.SelectedIndex = index;
             }
-            
-
-
-
-
         }
 
         private void EnableViewState(bool v)
