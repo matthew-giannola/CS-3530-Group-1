@@ -40,7 +40,7 @@ namespace Finalprog
         protected void testButton_Click(object sender, EventArgs e)
         {
             Quiz_Page.course = course;
-            Response.Redirect("Quiz.aspx", false);
+            Response.Redirect("Quiz_Page.aspx", false);
         }
 
     }

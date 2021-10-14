@@ -36,7 +36,8 @@ namespace Finalprog
 
         protected void ButtonNav_Click(object sender, EventArgs e)
         {
-            Response.Redirect("CoursePage.aspx");
+            CoursePage.course = 1430;
+            Response.Redirect("~/Course Function/CoursePage.aspx");
         }
 
 
