@@ -1,10 +1,19 @@
-﻿<%@ Page Title="Quiz" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Quiz.aspx.cs" Inherits="Finalprog.About" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Quiz_Page.aspx.cs" Inherits="Finalprog.Quiz_Page" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+        </div>
     <h2>
+            <h2>
         <asp:Label ID="quizTitle" runat="server" Text="Label"></asp:Label>
     </h2>
-    <h2>
         <asp:Label ID="Question_1" runat="server" Text="Question 1"></asp:Label>
         <asp:Label ID="scoreLabel" runat="server" Text="Label" Visible="False"></asp:Label>
         <asp:RadioButtonList ID="RadioButtonList1" runat="server" Height="157px" CausesValidation="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" ViewStateMode="Enabled">
@@ -46,5 +55,9 @@
             <asp:ListItem>D)</asp:ListItem>
         </asp:RadioButtonList>
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" />
-&nbsp;</h2>
-    </asp:Content>
+    </form>
+</body>
+</html>
+
+
+

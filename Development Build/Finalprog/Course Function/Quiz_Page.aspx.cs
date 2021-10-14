@@ -4,14 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
-using System.Configuration;
-using Finalprog;
 
 namespace Finalprog
 {
-
-    public partial class About : Page
+    public partial class Quiz_Page : System.Web.UI.Page
     {
         public static Int32 course;
         private static int quizid;

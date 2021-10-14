@@ -38,8 +38,8 @@ namespace Finalprog
 
         protected void testButton_Click(object sender, EventArgs e)
         {
-            About.course = course;
-            Response.Redirect("Quiz.aspx", false);
+            Quiz_Page.course = course;
+            Response.Redirect("Quiz_Page.aspx", false);
         }
     }
 }
